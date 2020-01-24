@@ -1,0 +1,70 @@
+/* components/cu-header/index.wxss */
+.cu-header {
+	display: block;
+	position: relative;
+}
+
+.cu-header .cu-bar .content {
+	width: calc(100% - 440rpx);
+}
+
+
+.cu-header .cu-bar .content image {
+	height: 60rpx;
+	width: 240rpx;
+}
+
+.cu-header .cu-bar {
+	min-height: 0px;
+	padding-right: 220rpx;
+	box-shadow: 0rpx 0rpx 0rpx;
+	z-index: 9999;
+}
+
+.cu-header .cu-bar .border-custom {
+	position: relative;
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 1000rpx;
+	height: 30px;
+}
+
+.cu-header .cu-bar .border-custom::after {
+	content: " ";
+	width: 200%;
+	height: 200%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: inherit;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+	pointer-events: none;
+	box-sizing: border-box;
+	border: 1rpx solid var(--white);
+	opacity: 0.5;
+}
+
+.cu-header .cu-bar .border::before {
+	content: " ";
+	width: 1rpx;
+	height: 110%;
+	position: absolute;
+	top: 22.5%;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transform: scale(0.5);
+	transform-origin: 0 0;
+	pointer-events: none;
+	box-sizing: border-box;
+	opacity: 0.6;
+	background-color: var(--white);
+}
+
+.cu-header .cu-bar .border text {
+	display: block;
+	flex: 1;
+	margin: auto !important;
+	text-align: center;
+	font-size: 34rpx;
+}

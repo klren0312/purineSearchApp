@@ -1,0 +1,17 @@
+<!--components/cu-header/index.wxml-->
+<view class="cu-header" style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px">
+    <view class="action" bindtap="backHandler" wx:if="{{isBack}}">
+      <text class="cu-back"></text>
+      <slot name="backText"></slot>
+    </view>
+    <view class="action border-action" wx:if="{{isCustom}}" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
+      <text class="cu-back" bindtap="backHandler"></text>
+      <text class="cu-home" bindtap="toHome"></text>
+    </view>
+    <view class="content" style="top:{{StatusBar}}px">
+      <slot name="content"></slot>
+    </view>
+    <slot name="right"></slot>
+  </view>
+</view>
