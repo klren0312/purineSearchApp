@@ -1,4 +1,6 @@
 // components/cu-header/index.js
+const app = getApp()
+
 Component({
   /**
    * 组件的一些选项
@@ -45,7 +47,7 @@ Component({
     },
     toHome () {
       wx.relaunch({
-        url: '/paegs/index/index'
+        url: '/pages/index/index'
       })
     }
   }

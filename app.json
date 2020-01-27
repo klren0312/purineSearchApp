@@ -7,8 +7,12 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "style": "v2",
+  "usingComponents": {
+    "cu-header": "components/cu-header/index"
+  },
   "sitemapLocation": "sitemap.json"
 }

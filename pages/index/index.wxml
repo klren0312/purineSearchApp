@@ -1,3 +1,6 @@
 <!--index.wxml-->
 <view class="container">
+  <cu-header isCustom="{{true}}">
+    <view slot="content">ColorUI 空白模板</view>
+  </cu-header>
 </view>
