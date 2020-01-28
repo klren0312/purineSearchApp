@@ -4,7 +4,6 @@ App({
     // 获取系统状态栏信息
     wx.getSystemInfo({
       success: e => {
-        console.log(e)
         this.globalData.ScreenHeight = e.screenHeight
         this.globalData.StatusBar = e.statusBarHeight;
         let capsule = wx.getMenuButtonBoundingClientRect();

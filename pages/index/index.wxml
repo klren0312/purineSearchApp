@@ -1,11 +1,11 @@
 <!--index.wxml-->
-<view class="container" style="min-height: {{ScreenHeight}}px">
+<view class="container" style="min-height: {{ScreenHeight}}px;">
   <view class="main-content">
     <view class="status-bar" style="height:{{StatusBar}}px"></view>
-    <view class="header-text big-text">查询</view>
-    <view class="header-text">嘌呤含量</view>
+    <view class="header-text big-text" style="padding-top: {{CustomBar - StatusBar}}px;">查询</view>
+    <view class="header-text">食物嘌呤含量</view>
     <view class="search">
-      <view class="search-input">
+      <view class="search-input" bindtap="toSearch">
         <text>搜索</text>
         <text class="iconfont icon-search"></text>
       </view>

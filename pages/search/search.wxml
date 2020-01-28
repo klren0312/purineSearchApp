@@ -1,0 +1,19 @@
+<view class="container" style="min-height: {{ScreenHeight}}px;">
+  <cu-header isCustom="{{true}}">
+  </cu-header>
+  <view class="search-input">
+    <input class="input" bindinput="inputHandler" bindconfirm="confirmSearch" type="text" placeholder="请输入食物名称" />
+    <view class="iconfont icon-search search-btn" bindtap="search"></view>
+  </view>
+  <scroll-view style="height: calc(100vh - {{CustomBar}}px - 88px);" class="scroll-view" scroll-x="false" scroll-y="true">
+    <view class="card-block">
+      <view class="card">
+        <view>西红柿</view>
+        <view>
+          <text class="value">4.3</text>
+          <text class="unit">mg/100g</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
