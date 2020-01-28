@@ -5,12 +5,17 @@ view {
   box-sizing: border-box;
 }
 
+.container {
+  background: #fff;
+}
+
 /* ==================
         导航
  ==================== */
 .cu-header {
   display: block;
   position: relative;
+  background: #fff;
 }
 
 .cu-header .cu-bar .content {

@@ -1,6 +1,14 @@
 <!--index.wxml-->
-<view class="container">
-  <cu-header isCustom="{{true}}">
-    <view slot="content">ColorUI 空白模板</view>
-  </cu-header>
+<view class="container" style="min-height: {{ScreenHeight}}px">
+  <view class="main-content">
+    <view class="status-bar" style="height:{{StatusBar}}px"></view>
+    <view class="header-text big-text">查询</view>
+    <view class="header-text">嘌呤含量</view>
+    <view class="search">
+      <view class="search-input">
+        <text>搜索</text>
+        <text class="iconfont icon-search"></text>
+      </view>
+    </view>
+  </view>
 </view>
