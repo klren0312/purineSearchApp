@@ -1,5 +1,6 @@
 /* pages/search/search.wxss */
 .container {
+  position: relative;
   background: #fafafa;
 }
 
@@ -29,6 +30,7 @@
   padding: 0 40rpx;
 }
 .card {
+  margin-bottom: 20rpx;
   padding: 20rpx 40rpx;
   display: flex;
   justify-content: space-between;
@@ -41,4 +43,33 @@
 .card .unit {
   margin-left: 10rpx;
   font-size: 24rpx;
+}
+
+.voice-btn {
+  position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 40rpx;
+	margin: auto;
+	width: 140rpx;
+	height: 140rpx;
+  line-height: 140rpx;
+  text-align: center;
+  color: #6a7cff;
+	border-radius: 50%;
+	border: 1rpx solid #6a7cff;
+	background: #FFFFFF;
+}
+
+.voice-btn.active {
+  background: #eeeeee;
+  pointer-events: none;
+}
+
+.voice-btn.unactive {
+  pointer-events: unset;
+}
+
+.icon-voice {
+  font-size: 64rpx;
 }
