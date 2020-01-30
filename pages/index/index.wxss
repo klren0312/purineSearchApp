@@ -49,3 +49,23 @@
 .icon-search {
   font-size: 50rpx;
 }
+
+.tips {
+  margin-top: 60rpx;
+  padding: 40rpx;
+}
+
+.tips-card {
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  line-height: 2;
+  color: #000;
+  background: rgba(255, 255, 255, .7);
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+
+.tips-card .title,
+.tips-card .number {
+  font-weight: bold;
+}
+

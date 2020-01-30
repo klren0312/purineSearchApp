@@ -90,7 +90,9 @@ Page({
    * 松开按钮结束语音识别
    */
   endStreamRecord: function(e) {
-    wx.showLoading()
+    wx.showLoading({
+      title: '查询中...',
+    })
     manager.stop()
   },
 
