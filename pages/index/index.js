@@ -6,7 +6,8 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    ScreenHeight: app.globalData.ScreenHeight
+    ScreenHeight: app.globalData.ScreenHeight,
+    isShow: false
   },
   onLoad: function () { 
   },

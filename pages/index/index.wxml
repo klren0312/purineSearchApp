@@ -10,7 +10,7 @@
         <text class="iconfont icon-search"></text>
       </view>
     </view>
-    <view class="tips">
+    <view wx:if="{{isShow}}"  class="tips">
       <view class="tips-card">
         <view class="title">痛风急性发作期</view>
         <view class="content">每日嘌呤摄入量控制在<text class="number">100－150mg</text>之间</view>
