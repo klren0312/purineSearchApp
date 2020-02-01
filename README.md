@@ -17,7 +17,6 @@
 
 ## 截图
 ![](./images/1.jpg)
-![](./images/2.jpg)
 
 ## 宣传海报
 ![](./images/ad.png)
