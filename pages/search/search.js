@@ -190,8 +190,8 @@ Page({
    */
   onShareAppMessage: function () {
     return {
-      title: this.data.searchValue + '嘌呤含量查询',
-      path: '/page/search?name=' + this.data.searchValue
+      title: this.data.searchValue + '的嘌呤含量查询',
+      path: '/pages/index/index?name=' + this.data.searchValue
     }
   }
 })

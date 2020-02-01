@@ -1,7 +1,12 @@
 {
 	"description": "项目配置文件",
 	"packOptions": {
-		"ignore": []
+		"ignore": [
+			{
+				"type": "folder",
+				"value": "images"
+			}
+		]
 	},
 	"setting": {
 		"urlCheck": true,
