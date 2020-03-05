@@ -29,12 +29,20 @@
 .card-block {
   padding: 0 40rpx;
 }
+
 .card {
+  padding: 0 40rpx 20rpx;
   margin-bottom: 20rpx;
-  padding: 20rpx 40rpx;
+  background: #fff;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+.card .header{
+  margin-bottom: 20rpx;
+  padding: 20rpx 0;
   display: flex;
   justify-content: space-between;
   background: #fff;
+  border-bottom: 1rpx solid #dfdfdf;
 }
 
 .card .value {

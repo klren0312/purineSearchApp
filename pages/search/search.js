@@ -45,6 +45,7 @@ Page({
       .field({
         name: true,
         value: true,
+        advice: true
       })
       .get()
       .then(res => {
