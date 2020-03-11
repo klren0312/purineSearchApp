@@ -53,6 +53,10 @@
   font-size: 24rpx;
 }
 
+.card .content {
+  color: #333;
+}
+
 .voice-btn {
   position: fixed;
 	left: 0;

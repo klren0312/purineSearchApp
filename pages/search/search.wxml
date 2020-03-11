@@ -8,7 +8,7 @@
   </view>
   <scroll-view style="height: calc(100vh - {{CustomBar}}px - 88px);" class="scroll-view" scroll-x="false" scroll-y="true">
     <view class="card-block">
-      <view class="card" wx:for="{{results}}" wx:key="_id">
+      <view class="card" wx:for="{{results}}" wx:key="_id" bindtap="showDetails" data-id="{{index}}">
         <view class="header">
           <view>{{item.name}}</view>
           <view>
@@ -16,7 +16,7 @@
             <text class="unit">mg/100g</text>
           </view>
         </view>
-        <view class="content">
+        <view class="content" wx:if="{{item.show}}">
           {{item.advice}}
         </view>
       </view>

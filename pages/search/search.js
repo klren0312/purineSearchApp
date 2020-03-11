@@ -49,8 +49,14 @@ Page({
       })
       .get()
       .then(res => {
+        const data = res.data.map(v => {
+          return {
+            ...v,
+            show: false
+          }
+        })
         this.setData({
-          results: res.data
+          results: data
         })
         if (res.data.length !== 0) {
           this.addHistory(this.data.searchValue)
@@ -61,7 +67,12 @@ Page({
         wx.hideLoading()
       })
   },
-
+  showDetails: function (e) {
+    const index = 'results[' + e.currentTarget.dataset.id + '].show'
+    this.setData({
+      [index]: !this.data.results[parseInt(e.currentTarget.dataset.id)].show
+    })
+  },
   addHistory: async function (name) {
     const db = wx.cloud.database()
     db.collection('history').add({
