@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "add-tip": "../../components/add-tip/index"
+  }
 }

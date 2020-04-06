@@ -51,6 +51,7 @@
 }
 
 .tips {
+  position: relative;
   margin-top: 60rpx;
   padding: 40rpx;
 }

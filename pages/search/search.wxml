@@ -2,24 +2,33 @@
   <cu-header isCustom="{{true}}">
     <view slot="content">食物嘌呤含量查询</view>
   </cu-header>
+  <add-tip></add-tip>
   <view class="search-input">
     <input class="input" value="{{searchValue}}" bindinput="inputHandler" bindconfirm="confirmSearch" type="text" placeholder="请输入食物名称" />
     <view class="iconfont icon-search search-btn" bindtap="search"></view>
   </view>
   <scroll-view style="height: calc(100vh - {{CustomBar}}px - 88px);" class="scroll-view" scroll-x="false" scroll-y="true">
     <view class="card-block">
-      <view class="card" wx:for="{{results}}" wx:key="_id" bindtap="showDetails" data-id="{{index}}">
-        <view class="header">
-          <view>{{item.name}}</view>
-          <view>
-            <text class="value">{{item.value}}</text>
-            <text class="unit">mg/100g</text>
+      <view class="no-data-block" wx:if="{{results.length === 0}}">
+        没有你想要的数据? 
+        <button class="tips-card" open-type="feedback">
+          点击反馈
+        </button>
+      </view>
+      <block wx:else>
+        <view class="card" wx:for="{{results}}" wx:key="_id" bindtap="showDetails" data-id="{{index}}">
+          <view class="header">
+            <view>{{item.name}}</view>
+            <view>
+              <text class="value">{{item.value}}</text>
+              <text class="unit">mg/100g</text>
+            </view>
+          </view>
+          <view class="content" wx:if="{{item.show}}">
+            {{item.advice}}
           </view>
         </view>
-        <view class="content" wx:if="{{item.show}}">
-          {{item.advice}}
-        </view>
-      </view>
+      </block>
     </view>
   </scroll-view>
   <view class="voice-btn {{startClass}}"

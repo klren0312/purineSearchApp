@@ -23,7 +23,7 @@ Page({
   },
 
   confirmSearch: function (e) {
-    console.log(e.detail)
+    this.getDatas(e.detail)
   },
 
   search: function () {
@@ -31,6 +31,15 @@ Page({
   },
 
   getDatas: async function (name) {
+    if (name === '') {
+      wx.showToast({
+        title: '请输入食材名称',
+        icon: 'none',
+        duration: 1500,
+        mask: false
+      })
+      return
+    }
     wx.showLoading({
       title: '查询中...',
     })
@@ -60,6 +69,13 @@ Page({
         })
         if (res.data.length !== 0) {
           this.addHistory(this.data.searchValue)
+        } else {
+          wx.showToast({
+            title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
+            icon: 'none',
+            duration: 3000,
+            mask: false
+          })
         }
         wx.hideLoading()
       })

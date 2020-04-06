@@ -57,6 +57,12 @@
   color: #333;
 }
 
+.no-data-block {
+  padding-top: 20rpx;
+  line-height: 3;
+  text-align: center;
+}
+
 .voice-btn {
   position: fixed;
 	left: 0;

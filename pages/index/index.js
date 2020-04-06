@@ -15,6 +15,7 @@ Page({
         url: '/pages/search/search?name=' + options.name
       })
     }
+    
   },
   toSearch: function () {
     wx.navigateTo({
