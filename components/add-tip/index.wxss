@@ -30,7 +30,7 @@
   padding: 0 20rpx;
   margin-right: 40rpx;
 }
-.body > text {
+.body > .text {
   color: #FFF;
   font-size: 28rpx;
   font-weight: 400;

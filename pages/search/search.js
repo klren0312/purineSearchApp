@@ -221,5 +221,20 @@ Page({
       title: this.data.searchValue + '的嘌呤含量查询',
       path: '/pages/index/index?name=' + this.data.searchValue
     }
+  },
+  /**
+   * 分享到朋友圈
+   */
+  onShareTimeline: function () {
+    let title = '快来查查食物的嘌呤含量!'
+    if (this.data.searchValue) {
+      title = '点击查看' + this.data.searchValue + '的嘌呤含量'
+    }
+    return {
+      title: title,
+      query: {
+        name: this.data.searchValue
+      }
+    }
   }
 })

@@ -1,6 +1,6 @@
 <view class="box" wx:if="{{show}}" style="top: calc({{CustomBar}}px - 20rpx)">
   <view class='arrow'></view>
   <view class='body' bindtap="closeTip">
-    <text>点击「添加到我的小程序」，访问更便捷</text>
+    <text class="text">点击「添加到我的小程序」，访问更便捷</text>
   </view>
 </view>

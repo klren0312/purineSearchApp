@@ -30,5 +30,13 @@ Page({
       title: '食物嘌呤含量',
       path: '/pages/index/index'
     }
+  },
+  /**
+   * 分享到朋友圈
+   */
+  onShareTimeline () {
+    return {
+      title: '快来查查食物的嘌呤含量!'
+    }
   }
 })
