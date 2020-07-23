@@ -23,7 +23,7 @@ Page({
   },
 
   confirmSearch: function (e) {
-    this.getDatas(e.detail)
+    this.getDatas(e.detail.value)
   },
 
   search: function () {
@@ -48,7 +48,6 @@ Page({
       .where({
         name: db.RegExp({
           regexp: name,
-          options: 'i'
         })
       })
       .field({
