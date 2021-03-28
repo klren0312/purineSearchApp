@@ -7,9 +7,14 @@
     <view class="header-text">食物嘌呤含量</view>
     <view class="search">
       <view class="search-input" bindtap="toSearch">
-        <text>搜索</text>
+        <text>搜索 <text wx:if="{{totalNum > 0}}">(共{{totalNum}}个数据)</text></text>
         <text class="iconfont icon-search"></text>
       </view>
+    </view>
+    <view class="type-block">
+      <view class="type-item high" bindtap="levelHandle" data-level="2"><view>高嘌呤</view>食物</view>
+      <view class="type-item middle" bindtap="levelHandle" data-level="1"><view>中嘌呤</view>食物</view>
+      <view class="type-item low" bindtap="levelHandle" data-level="0"><view>低嘌呤</view>食物</view>
     </view>
   </view>
 </view>

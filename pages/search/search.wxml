@@ -17,7 +17,7 @@
       </view>
       <block wx:else>
         <view class="card" wx:for="{{results}}" wx:key="_id" bindtap="showDetails" data-id="{{index}}">
-          <view class="header">
+          <view class="header" style="color: {{levelColor[item.level]}}">
             <view>{{item.name}}</view>
             <view>
               <text class="value">{{item.value}}</text>

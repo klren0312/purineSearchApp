@@ -65,13 +65,11 @@
 
 .voice-btn {
   position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 40rpx;
-	margin: auto;
-	width: 140rpx;
-	height: 140rpx;
-  line-height: 140rpx;
+	right: 36rpx;
+	bottom: 36rpx;
+	width: 100rpx;
+	height: 100rpx;
+  line-height: 100rpx;
   text-align: center;
   color: #6a7cff;
 	border-radius: 50%;

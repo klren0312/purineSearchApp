@@ -12,8 +12,14 @@ Page({
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
     searchValue: '',
+    searchLevel: '',
     results: [],
-    startClass: 'unactive'
+    startClass: 'unactive',
+    levelColor: {
+      0: '#67C23A',
+      1: '#E6A23C',
+      2: '#F56C6C'
+    }
   },
 
   inputHandler: function (e) {
@@ -40,6 +46,9 @@ Page({
       })
       return
     }
+    this.setData({
+      searchLevel: ''
+    })
     wx.showLoading({
       title: '查询中...',
     })
@@ -53,7 +62,8 @@ Page({
       .field({
         name: true,
         value: true,
-        advice: true
+        advice: true,
+        level: true
       })
       .get()
       .then(res => {
@@ -157,6 +167,52 @@ Page({
       console.error("error msg", res)
     }
   },
+
+  /**
+   * 通过嘌呤等级获取食材
+   * @param {number} level 
+   */
+  getDatasByLevel: async function (level) {
+    wx.showLoading({
+      title: '查询中...',
+    })
+    const db = wx.cloud.database()
+    db.collection('food')
+      .where({
+        level: level
+      })
+      .field({
+        name: true,
+        value: true,
+        advice: true,
+        level: true
+      })
+      .limit(30)
+      .get()
+      .then(res => {
+        const data = res.data.map(v => {
+          return {
+            ...v,
+            show: false
+          }
+        })
+        this.setData({
+          results: data
+        })
+        if (res.data.length === 0) {
+          wx.showToast({
+            title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
+            icon: 'none',
+            duration: 3000,
+            mask: false
+          })
+        }
+        wx.hideLoading()
+      })
+      .catch(() => {
+        wx.hideLoading()
+      })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -166,6 +222,11 @@ Page({
         searchValue: options.name
       })
       this.getDatas(options.name)
+    } else if (options.hasOwnProperty('level')) {
+      this.setData({
+        searchLevel: options.level
+      })
+      this.getDatasByLevel(options.level)
     }
     this.recognizeVoice()
   },
@@ -216,10 +277,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: this.data.searchValue + '的嘌呤含量查询',
-      path: '/pages/index/index?name=' + this.data.searchValue
+    if (this.data.searchValue) {
+      return {
+        title: this.data.searchValue + '的嘌呤含量查询',
+        path: `/pages/index/index?name=${this.data.searchValue}&level=${this.data.searchLevel}`
+      }
+    } else {
+      return {
+        title: '嘌呤含量',
+        path: `/pages/index/index?level=${this.data.searchLevel}`
+      }
     }
+
   },
   /**
    * 分享到朋友圈

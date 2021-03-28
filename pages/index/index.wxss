@@ -50,23 +50,30 @@
   font-size: 50rpx;
 }
 
-.tips {
+.type-block {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   position: relative;
   margin-top: 60rpx;
   padding: 40rpx;
 }
 
-.tips-card {
+.type-item {
   padding: 20rpx;
   margin-bottom: 20rpx;
-  line-height: 2;
-  color: #000;
-  background: rgba(255, 255, 255, .7);
+  line-height: 1.5;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 }
-
-.tips-card .title,
-.tips-card .number {
-  font-weight: bold;
+.type-item.high {
+  background: rgba(245, 108, 108, .7);
 }
-
+.type-item.middle {
+  background: rgba(230, 162, 60, .7);
+}
+.type-item.low {
+  background: rgba(103, 194, 58, .7);
+}

@@ -7,19 +7,43 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
-    isShow: false
+    isShow: false,
+    totalNum: 0
   },
   onLoad: function (options) {
     if (options.hasOwnProperty('name')) {
       wx.navigateTo({
         url: '/pages/search/search?name=' + options.name
       })
+    } else if (options.hasOwnProperty('level')) {
+      wx.navigateTo({
+        url: '/pages/search/search?level=' + options.level
+      })
+    } else {
+      this.getTotalFoodNum()
     }
-    
   },
   toSearch: function () {
     wx.navigateTo({
       url: '/pages/search/search'
+    })
+  },
+  /**
+   * 获取总数
+   */
+  getTotalFoodNum: function () {
+    const db = wx.cloud.database()
+    db.collection('food').count().then(res => {
+      if (res.total) {
+        this.setData({
+          totalNum: res.total
+        })
+      }
+    })
+  },
+  levelHandle: function (e) {
+    wx.navigateTo({
+      url: '/pages/search/search?level=' + e.currentTarget.dataset['level']
     })
   },
   /**
