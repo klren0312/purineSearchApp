@@ -7,7 +7,7 @@
     <input class="input" value="{{searchValue}}" bindinput="inputHandler" bindconfirm="confirmSearch" type="text" placeholder="请输入食物名称" />
     <view class="iconfont icon-search search-btn" bindtap="search"></view>
   </view>
-  <scroll-view style="height: calc(100vh - {{CustomBar}}px - 88px);" class="scroll-view" scroll-x="false" scroll-y="true">
+  <scroll-view style="height: calc(100vh - {{CustomBar}}px - 88px);" class="scroll-view" scroll-x="false" scroll-y="true" bindscrolltolower="listScrollBottom">
     <view class="card-block">
       <view class="no-data-block" wx:if="{{results.length === 0}}">
         没有你想要的数据? 

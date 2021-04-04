@@ -19,7 +19,9 @@ Page({
       0: '#67C23A',
       1: '#E6A23C',
       2: '#F56C6C'
-    }
+    },
+    page: 0,
+    isBottom: false
   },
 
   inputHandler: function (e) {
@@ -47,7 +49,9 @@ Page({
       return
     }
     this.setData({
-      searchLevel: ''
+      searchLevel: '',
+      page: 0,
+      isBottom: true
     })
     wx.showLoading({
       title: '查询中...',
@@ -172,14 +176,14 @@ Page({
    * 通过嘌呤等级获取食材
    * @param {number} level 
    */
-  getDatasByLevel: async function (level) {
+  getDatasByLevel: async function () {
     wx.showLoading({
       title: '查询中...',
     })
     const db = wx.cloud.database()
     db.collection('food')
       .where({
-        level: level
+        level: this.data.searchLevel
       })
       .field({
         name: true,
@@ -187,9 +191,21 @@ Page({
         advice: true,
         level: true
       })
+      .skip(this.data.page)
       .limit(30)
       .get()
       .then(res => {
+        if (res.data.length > 0) {
+          this.setData({
+            page: this.data.page + 30
+          })
+        } else {
+          this.setData({
+            isBottom: true
+          })
+          wx.hideLoading()
+          return
+        }
         const data = res.data.map(v => {
           return {
             ...v,
@@ -197,21 +213,23 @@ Page({
           }
         })
         this.setData({
-          results: data
+          results: this.data.results.concat(data)
         })
-        if (res.data.length === 0) {
-          wx.showToast({
-            title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
-            icon: 'none',
-            duration: 3000,
-            mask: false
-          })
-        }
+
         wx.hideLoading()
       })
       .catch(() => {
         wx.hideLoading()
       })
+  },
+
+  /**
+   * 滚动加载
+   */
+  listScrollBottom: function() {
+    if (this.data.searchLevel && !this.data.isBottom) {
+      this.getDatasByLevel()
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -226,7 +244,7 @@ Page({
       this.setData({
         searchLevel: options.level
       })
-      this.getDatasByLevel(options.level)
+      this.getDatasByLevel()
     }
     this.recognizeVoice()
   },
