@@ -114,6 +114,9 @@ Page({
       console.log(res)
     })
     .catch(console.error)
+    wx.reportAnalytics('search_food', {
+      food: name,
+    })
   },
 
   /**

@@ -16,5 +16,10 @@
       <view class="type-item middle" bindtap="levelHandle" data-level="1"><view>中嘌呤</view>食物</view>
       <view class="type-item low" bindtap="levelHandle" data-level="0"><view>低嘌呤</view>食物</view>
     </view>
+    <view class="big-data-block" bindtap="openModel">查看嘌呤搜索大数据!</view>
+    <view class="big-data-model" wx:if="{{showModel}}">
+      <image class="big-data-image" src="https://zzes-1251916954.cos.ap-shanghai.myqcloud.com/bigd.png"></image>
+      <button bindtap="closeModel">关闭</button>
+    </view>
   </view>
 </view>

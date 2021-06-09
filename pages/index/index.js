@@ -8,7 +8,8 @@ Page({
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
     isShow: false,
-    totalNum: 0
+    totalNum: 0,
+    showModel: false
   },
   onLoad: function (options) {
     if (options.hasOwnProperty('name')) {
@@ -44,6 +45,16 @@ Page({
   levelHandle: function (e) {
     wx.navigateTo({
       url: '/pages/search/search?level=' + e.currentTarget.dataset['level']
+    })
+  },
+  openModel: function () {
+    this.setData({
+      showModel: true
+    })
+  },
+  closeModel: function () {
+    this.setData({
+      showModel: false
     })
   },
   /**
