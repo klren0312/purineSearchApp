@@ -57,7 +57,7 @@ Page({
       title: '查询中...',
     })
     const db = wx.cloud.database()
-    db.collection('food')
+    db.collection('food_new')
       .where({
         name: db.RegExp({
           regexp: name,
@@ -67,7 +67,9 @@ Page({
         name: true,
         value: true,
         advice: true,
-        level: true
+        level: true,
+        info: true,
+        type: true
       })
       .get()
       .then(res => {
@@ -124,6 +126,10 @@ Page({
    */
   streamRecord: function(e) {
     wx.stopBackgroundAudio()
+    wx.showToast({
+      icon: 'none',
+      title: '长按按钮, 到出现录音开始的提示后说话',
+    })
     manager.start({
       duration: 5000
     })
@@ -184,7 +190,7 @@ Page({
       title: '查询中...',
     })
     const db = wx.cloud.database()
-    db.collection('food')
+    db.collection('food_new')
       .where({
         level: this.data.searchLevel
       })
@@ -192,7 +198,9 @@ Page({
         name: true,
         value: true,
         advice: true,
-        level: true
+        level: true,
+        info: true,
+        type: true
       })
       .skip(this.data.page)
       .limit(30)

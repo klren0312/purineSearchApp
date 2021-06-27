@@ -44,7 +44,9 @@
   background: #fff;
   border-bottom: 1rpx solid #dfdfdf;
 }
-
+.card .food-name {
+  font-weight: bold;
+}
 .card .value {
   font-weight: bolder;
 }
@@ -55,6 +57,19 @@
 
 .card .content {
   color: #333;
+}
+
+.card .content .content-item {
+  margin-bottom: 20rpx;
+}
+
+.card .content .content-info,
+.card .content .content-type {
+  font-size: 30rpx;
+}
+
+.card .content .label {
+  font-weight: bold;
 }
 
 .no-data-block {

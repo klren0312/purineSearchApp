@@ -34,7 +34,7 @@ Page({
    */
   getTotalFoodNum: function () {
     const db = wx.cloud.database()
-    db.collection('food').count().then(res => {
+    db.collection('food_new').count().then(res => {
       if (res.total) {
         this.setData({
           totalNum: res.total

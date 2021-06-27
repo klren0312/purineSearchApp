@@ -18,14 +18,22 @@
       <block wx:else>
         <view class="card" wx:for="{{results}}" wx:key="_id" bindtap="showDetails" data-id="{{index}}">
           <view class="header" style="color: {{levelColor[item.level]}}">
-            <view>{{item.name}}</view>
+            <view class="food-name">{{item.name}}</view>
             <view>
               <text class="value">{{item.value}}</text>
               <text class="unit">mg/100g</text>
             </view>
           </view>
           <view class="content" wx:if="{{item.show}}">
-            {{item.advice}}
+            <view class="content-item">
+              <text class="label">建议: </text>{{item.advice}}
+            </view>
+            <view class="content-item content-info" wx:if="item.info">
+              <text class="label">介绍: </text>{{item.info}}
+            </view>
+            <view class="content-item content-type">
+              <text class="label">分类: </text>{{item.type}}
+            </view>
           </view>
         </view>
       </block>
