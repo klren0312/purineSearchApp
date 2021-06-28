@@ -84,6 +84,7 @@ Page({
         })
         if (res.data.length !== 0) {
           this.addHistory(this.data.searchValue)
+          wx.hideLoading()
         } else {
           wx.showToast({
             title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
@@ -92,7 +93,6 @@ Page({
             mask: false
           })
         }
-        wx.hideLoading()
       })
       .catch(() => {
         wx.hideLoading()
