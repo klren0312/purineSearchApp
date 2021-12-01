@@ -22,7 +22,7 @@
           <view class="switch-line {{isCache ? 'switch-on' : ''}}"></view>
           <view class="switch-text">离线数据缓存</view>
           <view class="switch-text">{{isCache ? '已开启' : '未开启'}}</view>
-          <switch class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
+          <switch disabled="{{isCache}}" class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
         </view>
       </view>
     </view>

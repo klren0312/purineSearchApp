@@ -52,7 +52,7 @@
 
 .feature-block {
   padding: 40rpx;
-  margin-top: 60rpx;
+  margin-top: 90rpx;
   display: flex;
   justify-content: space-between;
 }
