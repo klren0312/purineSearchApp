@@ -11,10 +11,20 @@
         <text class="iconfont icon-search"></text>
       </view>
     </view>
-    <view class="type-block">
-      <view class="type-item high" bindtap="levelHandle" data-level="2"><view>高嘌呤</view>食物</view>
-      <view class="type-item middle" bindtap="levelHandle" data-level="1"><view>中嘌呤</view>食物</view>
-      <view class="type-item low" bindtap="levelHandle" data-level="0"><view>低嘌呤</view>食物</view>
+    <view class="feature-block">
+      <view class="type-block">
+        <view class="type-item high" bindtap="levelHandle" data-level="2">高嘌呤</view>
+        <view class="type-item middle" bindtap="levelHandle" data-level="1">中嘌呤</view>
+        <view class="type-item low" bindtap="levelHandle" data-level="0">低嘌呤</view>
+      </view>
+      <view class="outline-block">
+        <view class="switch">
+          <view class="switch-line {{isCache ? 'switch-on' : ''}}"></view>
+          <view class="switch-text">离线数据缓存</view>
+          <view class="switch-text">{{isCache ? '已开启' : '未开启'}}</view>
+          <switch class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
+        </view>
+      </view>
     </view>
     <view class="big-data-block" bindtap="openModel">查看嘌呤搜索大数据!</view>
     <view class="big-data-model" wx:if="{{showModel}}">

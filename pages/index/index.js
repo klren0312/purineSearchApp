@@ -9,7 +9,8 @@ Page({
     ScreenHeight: app.globalData.ScreenHeight,
     isShow: false,
     totalNum: 0,
-    showModel: false
+    showModel: false,
+    isCache: false
   },
   onLoad: function (options) {
     if (options.hasOwnProperty('name')) {
@@ -45,6 +46,11 @@ Page({
   levelHandle: function (e) {
     wx.navigateTo({
       url: '/pages/search/search?level=' + e.currentTarget.dataset['level']
+    })
+  },
+  cacheChange: function (e) {
+    this.setData({
+      isCache: e.detail.value
     })
   },
   openModel: function () {
