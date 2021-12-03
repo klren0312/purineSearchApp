@@ -1,4 +1,5 @@
 # 食物嘌呤含量小程序
+[![CodeFactor](https://www.codefactor.io/repository/github/klren0312/purinesearchapp/badge)](https://www.codefactor.io/repository/github/klren0312/purinesearchapp)
 
 ## 技术
 微信原生 + 云开发
