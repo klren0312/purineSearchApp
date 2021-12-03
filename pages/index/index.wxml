@@ -13,9 +13,18 @@
     </view>
     <view class="feature-block">
       <view class="type-block">
-        <view class="type-item high" bindtap="levelHandle" data-level="2">高嘌呤</view>
-        <view class="type-item middle" bindtap="levelHandle" data-level="1">中嘌呤</view>
-        <view class="type-item low" bindtap="levelHandle" data-level="0">低嘌呤</view>
+        <view class="type-item high" bindtap="levelHandle" data-level="2">
+          <text class="iconfont icon-meat"></text>
+          高嘌呤
+        </view>
+        <view class="type-item middle" bindtap="levelHandle" data-level="1">
+          <text class="iconfont icon-mushroom"></text>
+          中嘌呤
+        </view>
+        <view class="type-item low" bindtap="levelHandle" data-level="0">
+          <text class="iconfont icon-vegetable"></text>
+          低嘌呤
+        </view>
       </view>
       <view class="outline-block">
         <view class="switch {{isCache ? 'active' : ''}}">

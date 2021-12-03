@@ -136,6 +136,7 @@
 }
 
 .type-item {
+  position: relative;
   width: 100%;
   padding: 20rpx;
   margin-bottom: 20rpx;
@@ -150,6 +151,15 @@
 
 .type-item:last-child {
   margin-bottom: 0;
+}
+
+.type-item .iconfont {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  font-size: 92rpx;
+  font-weight: lighter;
+  vertical-align: middle;
 }
 
 .type-item.high {

@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont';  /* Project id 1622169 */
-  src: url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.woff2?t=1638448640031') format('woff2'),
-       url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.woff?t=1638448640031') format('woff'),
-       url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.ttf?t=1638448640031') format('truetype');
+  src: url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff2?t=1638549434879') format('woff2'),
+       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff?t=1638549434879') format('woff'),
+       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.ttf?t=1638549434879') format('truetype');
 }
 
 .iconfont {
@@ -27,4 +27,16 @@
 
 .icon-voice:before {
   content: "\e65f";
+}
+
+.icon-meat:before {
+  content: "\e603";
+}
+
+.icon-mushroom:before {
+  content: "\e605";
+}
+
+.icon-vegetable:before {
+  content: "\e63c";
 }
