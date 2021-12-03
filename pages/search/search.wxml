@@ -12,7 +12,7 @@
       <view class="no-data-block" wx:if="{{results.length === 0}}">
         没有你想要的数据? 
         <button class="tips-card" open-type="feedback">
-          {{isOnline ? '' : '请联网后'}}点此反馈
+          {{ isOnline ? '' : '请联网后, ' }}点此反馈
         </button>
       </view>
       <block wx:else>

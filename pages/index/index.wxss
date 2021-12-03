@@ -67,9 +67,14 @@
   height: 100%;
   width: 100%;
   padding: 20rpx;
-  background: rgb(255 255 255 / 89%);
+  background: linear-gradient(45deg, #ffb9b9, #ffffff);
   border-radius: 16rpx;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  transition: background .3s ease-in-out;
+}
+
+.outline-block .switch.active {
+  background: linear-gradient(45deg, #d7fbe4, #ffffff);
 }
 
 .outline-block .switch .switch-line {
@@ -77,6 +82,7 @@
   width: 100%;
   background: rgba(245, 108, 108, .7);
   border-radius: 20rpx;
+  transition: background .3s ease-in-out;
 }
 
 .outline-block .switch .switch-line.switch-on {
@@ -84,14 +90,24 @@
 }
 
 .outline-block .switch .switch-text {
-  margin-top: 20rpx;
+  margin-top: 30rpx;
   font-weight: bold;
+}
+
+.outline-block .switch .switch-tip {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #323232;
 }
 
 .outline-block .switch-instance {
   position: absolute;
   bottom: 20rpx;
   right: 20rpx;
+}
+
+.icon-cache {
+  font-size: 100rpx;
 }
 
 /* switch 样式修改 */
@@ -137,13 +153,13 @@
 }
 
 .type-item.high {
- color: rgba(245, 108, 108, .7);
+ color: rgba(245, 108, 108, 1);
 }
 .type-item.middle {
- color: rgba(230, 162, 60, .7);
+ color: rgba(230, 162, 60, 1);
 }
 .type-item.low {
- color: rgba(103, 194, 58, .7);
+ color: rgba(103, 194, 58, 1);
 }
 
 .big-data-block {

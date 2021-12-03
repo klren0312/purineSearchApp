@@ -58,6 +58,7 @@ Page({
     wx.showLoading({
       title: '查询中...',
     })
+    // 存在缓存则使用缓存数据查询, 反之请求数据库
     if (this.data.totalData.length !== 0) {
       const results = this.data.totalData.filter(item => item.name.indexOf(name) !== -1)
       this.setData({
@@ -72,46 +73,46 @@ Page({
       })
     } else {
       const db = wx.cloud.database()
-    db.collection('food_new')
-      .where({
-        name: db.RegExp({
-          regexp: name,
+      db.collection('food_new')
+        .where({
+          name: db.RegExp({
+            regexp: name,
+          })
         })
-      })
-      .field({
-        name: true,
-        value: true,
-        advice: true,
-        level: true,
-        info: true,
-        type: true
-      })
-      .get()
-      .then(res => {
-        const data = res.data.map(v => {
-          return {
-            ...v,
-            show: false
+        .field({
+          name: true,
+          value: true,
+          advice: true,
+          level: true,
+          info: true,
+          type: true
+        })
+        .get()
+        .then(res => {
+          const data = res.data.map(v => {
+            return {
+              ...v,
+              show: false
+            }
+          })
+          this.setData({
+            results: data
+          })
+          if (res.data.length !== 0) {
+            this.addHistory(this.data.searchValue)
+            wx.hideLoading()
+          } else {
+            wx.showToast({
+              title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
+              icon: 'none',
+              duration: 3000,
+              mask: false
+            })
           }
         })
-        this.setData({
-          results: data
-        })
-        if (res.data.length !== 0) {
-          this.addHistory(this.data.searchValue)
+        .catch(() => {
           wx.hideLoading()
-        } else {
-          wx.showToast({
-            title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
-            icon: 'none',
-            duration: 3000,
-            mask: false
-          })
-        }
-      })
-      .catch(() => {
-        wx.hideLoading()
-      })
+        })
     }
   },
   showDetails: function (e) {
@@ -205,6 +206,7 @@ Page({
     wx.showLoading({
       title: '查询中...',
     })
+    // 存在缓存则使用缓存数据查询, 反之请求数据库
     if (this.data.totalData.length > 0) {
       const res = this.data.totalData.filter(v => {
         return v.level === this.data.searchLevel
@@ -278,10 +280,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取网络状态
+    wx.onNetworkStatusChange(res => {
+      this.setData({
+        isOnline: res.isConnected
+      })
+    })
     const cacheData = wx.getStorageSync('CacheData')
     if (cacheData) {
       this.setData({
-        totalData: JSON.parse(cacheData)
+        totalData: cacheData
       })
     }
     if (options.hasOwnProperty('name')) {

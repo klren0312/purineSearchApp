@@ -7,12 +7,19 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
-    isShow: false,
+    loading: false,
     totalNum: 0,
     showModel: false,
-    isCache: false
+    isCache: app.globalData.CacheVersion,
+    cacheData: app.globalData.CacheData,
+    isOnline: true
   },
   onLoad: function (options) {
+    wx.onNetworkStatusChange(res => {
+      this.setData({
+        isOnline: res.isConnected
+      })
+    })
     if (options.hasOwnProperty('name')) {
       wx.navigateTo({
         url: '/pages/search/search?name=' + options.name
@@ -34,14 +41,21 @@ Page({
    * 获取总数
    */
   getTotalFoodNum: function () {
-    const db = wx.cloud.database()
-    db.collection('food_new').count().then(res => {
-      if (res.total) {
-        this.setData({
-          totalNum: res.total
-        })
-      }
-    })
+    // 判断若存在缓存, 则用缓存
+    if (this.data.isCache) {
+      this.setData({
+        totalNum: this.data.cacheData.length
+      })
+    } else {
+      const db = wx.cloud.database()
+      db.collection('food_new').count().then(res => {
+        if (res.total) {
+          this.setData({
+            totalNum: res.total
+          })
+        }
+      })
+    }
   },
   levelHandle: function (e) {
     wx.navigateTo({
@@ -49,10 +63,43 @@ Page({
     })
   },
   cacheChange: function (e) {
-    this.setData({
-      isCache: e.detail.value
-    })
+    if (e.detail.value) {
+      this.setData({
+        loading: true
+      })
+      const db = wx.cloud.database()
+      db.collection('version').get().then(res => {
+        if (res.data[0].version !== app.globalData.CacheVersion) {
+          wx.cloud.downloadFile({
+            fileID: res.data[0].file, // 文件 ID
+            success: fileInfo => {
+              // 返回临时文件路径
+              const path = fileInfo.tempFilePath
+              // 读取文件
+              const fs = wx.getFileSystemManager()
+              const result = fs.readFileSync(path, 'utf-8')
+              const formatRes = JSON.parse(result)
+              this.setData({
+                cacheData: formatRes,
+                isCache: true,
+                loading: false
+              })
+              wx.setStorage({
+                key: 'CacheData',
+                data: formatRes
+              })
+              wx.setStorage({
+                key: 'CacheVersion',
+                data: res.data[0].version
+              })
+            },
+            fail: console.error
+          })
+        }
+      })
+    }
   },
+
   openModel: function () {
     this.setData({
       showModel: true

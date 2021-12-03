@@ -1,11 +1,8 @@
 @font-face {
-  font-family: 'iconfont';  /* project id 1622169 */
-  src: url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.eot');
-  src: url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* Project id 1622169 */
+  src: url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.woff2?t=1638448640031') format('woff2'),
+       url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.woff?t=1638448640031') format('woff'),
+       url('//at.alicdn.com/t/font_1622169_as7j0o5owg5.ttf?t=1638448640031') format('truetype');
 }
 
 .iconfont {
