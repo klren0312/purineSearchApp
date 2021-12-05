@@ -11,12 +11,32 @@
         <text class="iconfont icon-search"></text>
       </view>
     </view>
-    <view class="type-block">
-      <view class="type-item high" bindtap="levelHandle" data-level="2"><view>高嘌呤</view>食物</view>
-      <view class="type-item middle" bindtap="levelHandle" data-level="1"><view>中嘌呤</view>食物</view>
-      <view class="type-item low" bindtap="levelHandle" data-level="0"><view>低嘌呤</view>食物</view>
+    <view class="feature-block">
+      <view class="type-block">
+        <view class="type-item high" bindtap="levelHandle" data-level="2">
+          <text class="iconfont icon-meat"></text>
+          高嘌呤
+        </view>
+        <view class="type-item middle" bindtap="levelHandle" data-level="1">
+          <text class="iconfont icon-mushroom"></text>
+          中嘌呤
+        </view>
+        <view class="type-item low" bindtap="levelHandle" data-level="0">
+          <text class="iconfont icon-vegetable"></text>
+          低嘌呤
+        </view>
+      </view>
+      <view class="outline-block">
+        <view class="switch {{isCache ? 'active' : ''}}">
+          <view class="switch-line {{isCache ? 'switch-on' : ''}}"></view>
+          <view class="switch-text">没网? 也能看!</view>
+          <view class="switch-text">{{isCache ? '已开启😁' : '赶紧开启↘️'}}</view>
+          <view class="switch-tip" wx:if="{{loading}}">下载中...</view>
+          <switch disabled="{{isCache}}" class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
+        </view>
+      </view>
     </view>
-    <view class="big-data-block" bindtap="openModel">查看嘌呤搜索大数据!</view>
+    <view class="big-data-block" bindtap="openModel" wx:if="{{isOnline}}">查看嘌呤搜索大数据!</view>
     <view class="big-data-model" wx:if="{{showModel}}">
       <image class="big-data-image" src="https://zzes-1251916954.cos.ap-shanghai.myqcloud.com/bigd.png"></image>
       <button bindtap="closeModel">关闭</button>

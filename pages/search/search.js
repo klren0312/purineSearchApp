@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    totalData: [], // 所有数据
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
     searchValue: '',
@@ -21,7 +22,8 @@ Page({
       2: '#F56C6C'
     },
     page: 0,
-    isBottom: false
+    isBottom: false,
+    isOnline: true
   },
 
   inputHandler: function (e) {
@@ -56,47 +58,62 @@ Page({
     wx.showLoading({
       title: '查询中...',
     })
-    const db = wx.cloud.database()
-    db.collection('food_new')
-      .where({
-        name: db.RegExp({
-          regexp: name,
+    // 存在缓存则使用缓存数据查询, 反之请求数据库
+    if (this.data.totalData.length !== 0) {
+      const results = this.data.totalData.filter(item => item.name.indexOf(name) !== -1)
+      this.setData({
+        results: results
+      })
+      wx.hideLoading()
+    } else if (this.data.isOnline) {
+      wx.hideLoading()
+      wx.showToast({
+        icon: 'none',
+        title: '请联网后使用'
+      })
+    } else {
+      const db = wx.cloud.database()
+      db.collection('food_new')
+        .where({
+          name: db.RegExp({
+            regexp: name,
+          })
         })
-      })
-      .field({
-        name: true,
-        value: true,
-        advice: true,
-        level: true,
-        info: true,
-        type: true
-      })
-      .get()
-      .then(res => {
-        const data = res.data.map(v => {
-          return {
-            ...v,
-            show: false
+        .field({
+          name: true,
+          value: true,
+          advice: true,
+          level: true,
+          info: true,
+          type: true
+        })
+        .get()
+        .then(res => {
+          const data = res.data.map(v => {
+            return {
+              ...v,
+              show: false
+            }
+          })
+          this.setData({
+            results: data
+          })
+          if (res.data.length !== 0) {
+            this.addHistory(this.data.searchValue)
+            wx.hideLoading()
+          } else {
+            wx.showToast({
+              title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
+              icon: 'none',
+              duration: 3000,
+              mask: false
+            })
           }
         })
-        this.setData({
-          results: data
-        })
-        if (res.data.length !== 0) {
-          this.addHistory(this.data.searchValue)
+        .catch(() => {
           wx.hideLoading()
-        } else {
-          wx.showToast({
-            title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
-            icon: 'none',
-            duration: 3000,
-            mask: false
-          })
-        }
-      })
-      .catch(() => {
-        wx.hideLoading()
-      })
+        })
+    }
   },
   showDetails: function (e) {
     const index = 'results[' + e.currentTarget.dataset.id + '].show'
@@ -189,49 +206,66 @@ Page({
     wx.showLoading({
       title: '查询中...',
     })
-    const db = wx.cloud.database()
-    db.collection('food_new')
-      .where({
-        level: this.data.searchLevel
+    // 存在缓存则使用缓存数据查询, 反之请求数据库
+    if (this.data.totalData.length > 0) {
+      const res = this.data.totalData.filter(v => {
+        return v.level === this.data.searchLevel
       })
-      .field({
-        name: true,
-        value: true,
-        advice: true,
-        level: true,
-        info: true,
-        type: true
+      this.setData({
+        results: res
       })
-      .skip(this.data.page)
-      .limit(30)
-      .get()
-      .then(res => {
-        if (res.data.length > 0) {
-          this.setData({
-            page: this.data.page + 30
-          })
-        } else {
-          this.setData({
-            isBottom: true
-          })
-          wx.hideLoading()
-          return
-        }
-        const data = res.data.map(v => {
-          return {
-            ...v,
-            show: false
+      wx.hideLoading()
+    } else if (!this.data.isOnline) {
+      wx.hideLoading()
+      wx.showToast({
+        icon: 'none',
+        title: '请联网后使用'
+      })
+    } else {
+      const db = wx.cloud.database()
+      db.collection('food_new')
+        .where({
+          level: this.data.searchLevel
+        })
+        .field({
+          name: true,
+          value: true,
+          advice: true,
+          level: true,
+          info: true,
+          type: true
+        })
+        .skip(this.data.page)
+        .limit(30)
+        .get()
+        .then(res => {
+          if (res.data.length > 0) {
+            this.setData({
+              page: this.data.page + 30
+            })
+          } else {
+            this.setData({
+              isBottom: true
+            })
+            wx.hideLoading()
+            return
           }
+          const data = res.data.map(v => {
+            return {
+              ...v,
+              show: false
+            }
+          })
+          this.setData({
+            results: this.data.results.concat(data)
+          })
+  
+          wx.hideLoading()
         })
-        this.setData({
-          results: this.data.results.concat(data)
+        .catch(() => {
+          wx.hideLoading()
         })
-
-        wx.hideLoading()
-      })
-      .catch(() => {
-        wx.hideLoading()
-      })
+    }
   },
 
   /**
@@ -246,6 +280,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取网络状态
+    wx.onNetworkStatusChange(res => {
+      this.setData({
+        isOnline: res.isConnected
+      })
+    })
+    const cacheData = wx.getStorageSync('CacheData')
+    if (cacheData) {
+      this.setData({
+        totalData: cacheData
+      })
+    }
     if (options.hasOwnProperty('name')) {
       this.setData({
         searchValue: options.name

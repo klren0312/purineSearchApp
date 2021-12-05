@@ -1,11 +1,8 @@
 @font-face {
-  font-family: 'iconfont';  /* project id 1622169 */
-  src: url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.eot');
-  src: url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1622169_oc8tegu7eca.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* Project id 1622169 */
+  src: url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff2?t=1638549434879') format('woff2'),
+       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff?t=1638549434879') format('woff'),
+       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.ttf?t=1638549434879') format('truetype');
 }
 
 .iconfont {
@@ -30,4 +27,16 @@
 
 .icon-voice:before {
   content: "\e65f";
+}
+
+.icon-meat:before {
+  content: "\e603";
+}
+
+.icon-mushroom:before {
+  content: "\e605";
+}
+
+.icon-vegetable:before {
+  content: "\e63c";
 }

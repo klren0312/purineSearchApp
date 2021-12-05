@@ -50,16 +50,94 @@
   font-size: 50rpx;
 }
 
-.type-block {
+.feature-block {
+  padding: 40rpx;
+  margin-top: 90rpx;
   display: flex;
+  justify-content: space-between;
+}
+
+.outline-block {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.outline-block .switch {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 20rpx;
+  background: linear-gradient(45deg, #ffb9b9, #ffffff);
+  border-radius: 16rpx;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  transition: background .3s ease-in-out;
+}
+
+.outline-block .switch.active {
+  background: linear-gradient(45deg, #d7fbe4, #ffffff);
+}
+
+.outline-block .switch .switch-line {
+  height: 20rpx;
+  width: 100%;
+  background: rgba(245, 108, 108, .7);
+  border-radius: 20rpx;
+  transition: background .3s ease-in-out;
+}
+
+.outline-block .switch .switch-line.switch-on {
+  background: rgba(103, 194, 58, .7);
+}
+
+.outline-block .switch .switch-text {
+  margin-top: 30rpx;
+  font-weight: bold;
+}
+
+.outline-block .switch .switch-tip {
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #323232;
+}
+
+.outline-block .switch-instance {
+  position: absolute;
+  bottom: 20rpx;
+  right: 20rpx;
+}
+
+.icon-cache {
+  font-size: 100rpx;
+}
+
+/* switch 样式修改 */
+.wx-switch-input {
+  width: 90rpx !important;
+  height: 40rpx !important;
+}
+
+.wx-switch-input::before {
+  width: 36rpx !important;
+  height: 36rpx !important;
+}
+
+.wx-switch-input::after {
+  width: 36rpx !important;
+  height: 36rpx !important;
+}
+
+.type-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  margin-top: 60rpx;
-  padding: 40rpx;
 }
 
 .type-item {
+  position: relative;
+  width: 100%;
   padding: 20rpx;
   margin-bottom: 20rpx;
   line-height: 1.5;
@@ -67,15 +145,31 @@
   font-weight: bold;
   text-align: center;
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+  background: rgb(255 255 255 / 89%);
+  border-radius: 16rpx;
 }
+
+.type-item:last-child {
+  margin-bottom: 0;
+}
+
+.type-item .iconfont {
+  position: absolute;
+  top: -8px;
+  left: 0;
+  font-size: 92rpx;
+  font-weight: lighter;
+  vertical-align: middle;
+}
+
 .type-item.high {
-  background: rgba(245, 108, 108, .7);
+ color: rgba(245, 108, 108, 1);
 }
 .type-item.middle {
-  background: rgba(230, 162, 60, .7);
+ color: rgba(230, 162, 60, 1);
 }
 .type-item.low {
-  background: rgba(103, 194, 58, .7);
+ color: rgba(103, 194, 58, 1);
 }
 
 .big-data-block {
