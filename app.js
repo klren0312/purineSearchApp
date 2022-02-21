@@ -9,12 +9,19 @@ App({
         env: 'market-f4hh5',
         traceUser: true,
       })
-      // 获取当前Storage中缓存
-      const cacheVersion = wx.getStorageSync('CacheVersion')
-      const cacheData = wx.getStorageSync('CacheData')
-      if (cacheVersion && cacheData) {
-        this.globalData.CacheVersion = cacheVersion
-        this.globalData.CacheData = cacheData
+      const openid = wx.getStorageSync('openid')
+      if (!openid) {
+        // 获取用户openid
+        wx.cloud.callFunction({
+          name: 'getOpenId',
+          complete: res => {
+            const { openid } = res
+            this.globalData.OpenId = openid
+            this.getCacheData()
+          }
+        })
+      } else {
+        this.globalData.OpenId = openid
       }
     }
     // 获取系统状态栏信息
@@ -31,6 +38,15 @@ App({
         }
       }
     })
+  },
+  getCacheData() {
+    // 获取当前Storage中缓存
+    const cacheVersion = wx.getStorageSync('CacheVersion')
+    const cacheData = wx.getStorageSync('CacheData')
+    if (cacheVersion && cacheData) {
+      this.globalData.CacheVersion = cacheVersion
+      this.globalData.CacheData = cacheData
+    }
   },
   globalData: {
     Custom: '',
