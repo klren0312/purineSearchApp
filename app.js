@@ -31,6 +31,12 @@ App({
         }
       }
     })
+    wx.cloud.callFunction({
+      name: 'getOpenId',
+      complete: res => {
+        console.log('callFunction test result: ', res)
+      }
+    })
   },
   globalData: {
     Custom: '',
