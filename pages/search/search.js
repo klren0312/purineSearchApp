@@ -65,7 +65,7 @@ Page({
         results: results
       })
       wx.hideLoading()
-    } else if (this.data.isOnline) {
+    } else if (!this.data.isOnline) {
       wx.hideLoading()
       wx.showToast({
         icon: 'none',
