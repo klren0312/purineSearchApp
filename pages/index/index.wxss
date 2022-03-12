@@ -234,7 +234,7 @@
 .icon-food {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-53%) rotate(-23deg);
   bottom: 0;
   margin: 0 auto;
   font-size: 60rpx;

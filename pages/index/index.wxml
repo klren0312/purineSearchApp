@@ -13,6 +13,7 @@
     <view class="top-block-footer" style="height:{{StatusBar}}px; bottom:-{{StatusBar}}px;">
       <view class="iconfont icon-food" style="bottom:-{{StatusBar - 10}}px;"></view>
     </view>
+    <!-- 拍照弹框 -->
     <view style="width: {{windowWidth}}px;height: {{windowWidth}}px;">
       <camera
         wx:if="{{showCamera}}"
@@ -24,10 +25,17 @@
       ></camera>
     </view>
     <view class="btn-group">
-      <button size="mini" type="primary" bindtap="takePhoto">拍照识别</button>
+      <button size="mini" type="primary" bindtap="takePhoto" disabled="{{testCount <= 0}}">拍照识别</button>
       <button size="mini" bindtap="closeBlock">关闭</button>
     </view>
-    <view class="pull-down-tip">{{pullDowntip}}</view>
+    <view class="test-info">
+      当前处于公测阶段, 您的使用次数为: {{testCount}}
+      <button bindtap="openAd">观看广告增加次数</button>
+    </view>
+    <view>
+      {{logText}}
+    </view>
+    <view class="pull-down-tip" wx:if="{{showTest}}">{{pullDowntip}}</view>
   </view>
   <add-tip></add-tip>
   <view class="main-content">

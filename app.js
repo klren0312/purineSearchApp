@@ -2,6 +2,8 @@
 App({
   onLaunch: function () {
     this.checkUpdate()
+    this.getSystemInfo()
+    this.getCacheData()
     // 初始化云开发
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -10,22 +12,28 @@ App({
         env: 'market-f4hh5',
         traceUser: true,
       })
-      const openid = wx.getStorageSync('openid')
-      if (!openid) {
+      let openId = wx.getStorageSync('openId')
+      if (!openId) {
         // 获取用户openid
         wx.cloud.callFunction({
           name: 'getOpenId',
           complete: res => {
-            const { openid } = res
-            this.globalData.OpenId = openid
-            this.getCacheData()
+            openId = res.result.openid
+            wx.setStorage({
+              key: 'openId',
+              data: openId
+            })
+            this.globalData.OpenId = openId
+            wx.showToast({
+              title: openId,
+              icon: 'none'
+            })
           }
         })
       } else {
-        this.globalData.OpenId = openid
+        this.globalData.OpenId = openId
       }
     }
-    this.getSystemInfo()
   },
   // 获取系统状态栏信息
   getSystemInfo() {
@@ -40,12 +48,6 @@ App({
         } else {
         	this.globalData.CustomBar = e.statusBarHeight + 50;
         }
-      }
-    })
-    wx.cloud.callFunction({
-      name: 'getOpenId',
-      complete: res => {
-        console.log('callFunction test result: ', res)
       }
     })
   },
