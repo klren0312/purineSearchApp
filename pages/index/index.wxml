@@ -1,5 +1,42 @@
 <!--index.wxml-->
-<view class="container" style="min-height: {{ScreenHeight}}px;">
+<view
+  class="container"
+  bindtouchstart="touchStart"
+  bindtouchmove="touchMove"
+  bindtouchend="touchEnd"
+  style="min-height: {{ScreenHeight}}px;"
+>
+  <view
+    class="top-block"
+    style="top:{{topTop}}px;left: {{renderBlock ? '0' : '-1000px'}};"
+  >
+    <view class="top-block-footer" style="height:{{StatusBar}}px; bottom:-{{StatusBar}}px;">
+      <view class="iconfont icon-food" style="bottom:-{{StatusBar - 10}}px;"></view>
+    </view>
+    <!-- 拍照弹框 -->
+    <view style="width: {{windowWidth}}px;height: {{windowWidth}}px;">
+      <camera
+        wx:if="{{showCamera}}"
+        class="the-camera"
+        device-position="back"
+        flash="off"
+        resolution="high"
+        style="width: {{windowWidth}}px;height: {{windowWidth}}px;"
+      ></camera>
+    </view>
+    <view class="btn-group">
+      <button size="mini" type="primary" bindtap="takePhoto" disabled="{{testCount <= 0}}">拍照识别</button>
+      <button size="mini" bindtap="closeBlock">关闭</button>
+    </view>
+    <view class="test-info">
+      当前处于公测阶段, 您的使用次数为: {{testCount}}
+      <button bindtap="openAd">观看广告增加次数</button>
+    </view>
+    <view>
+      {{logText}}
+    </view>
+    <view class="pull-down-tip" wx:if="{{showTest}}">{{pullDowntip}}</view>
+  </view>
   <add-tip></add-tip>
   <view class="main-content">
     <view class="status-bar" style="height:{{StatusBar}}px"></view>
@@ -30,7 +67,10 @@
         <view class="switch {{isCache ? 'active' : ''}}">
           <view class="switch-line {{isCache ? 'switch-on' : ''}}"></view>
           <view class="switch-text">没网? 也能看!</view>
-          <view class="switch-text">{{isCache ? '已开启😁' : '赶紧开启↘️'}}</view>
+          <view class="switch-text">
+            {{isCache ? '已开启' : '赶紧开启↘️'}}
+            <text class="iconfont {{isCache ? 'icon-cat' : ''}}"></text>
+          </view>
           <view class="switch-tip" wx:if="{{loading}}">下载中...</view>
           <switch disabled="{{isCache}}" class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
         </view>
