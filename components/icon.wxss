@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont';  /* Project id 1622169 */
-  src: url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff2?t=1638549434879') format('woff2'),
-       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.woff?t=1638549434879') format('woff'),
-       url('//at.alicdn.com/t/font_1622169_11jm80qua0pe.ttf?t=1638549434879') format('truetype');
+  src: url('//at.alicdn.com/t/font_1622169_3bp7wyhcoe7.woff2?t=1642832078946') format('woff2'),
+       url('//at.alicdn.com/t/font_1622169_3bp7wyhcoe7.woff?t=1642832078946') format('woff'),
+       url('//at.alicdn.com/t/font_1622169_3bp7wyhcoe7.ttf?t=1642832078946') format('truetype');
 }
 
 .iconfont {
@@ -39,4 +39,12 @@
 
 .icon-vegetable:before {
   content: "\e63c";
+}
+
+.icon-cat:before {
+  content: "\e602";
+}
+
+.icon-food:before {
+  content: "\e631";
 }

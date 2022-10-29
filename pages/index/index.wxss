@@ -50,6 +50,12 @@
   font-size: 50rpx;
 }
 
+.icon-cat {
+  font-size: 50rpx;
+  font-weight: bold;
+  color: rgba(103, 194, 58, .7);
+}
+
 .feature-block {
   padding: 40rpx;
   margin-top: 90rpx;
@@ -201,3 +207,61 @@
   width: 100%;
   height: 80%;
 }
+
+.top-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: -1000px;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  transition: top .2s cubic-bezier(0.28, 0.22, 0.83, 0.86);
+  z-index: 998;
+}
+
+.top-block-footer {
+  width: 8rpx;
+  position: absolute;
+  right: 0;
+  left: 0;
+
+  margin: 0 auto;
+  color: rgba(245, 108, 108, 1);
+  background: rgba(245, 108, 108, 1);
+}
+.icon-food {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-53%) rotate(-23deg);
+  bottom: 0;
+  margin: 0 auto;
+  font-size: 60rpx;
+}
+
+.pull-down-tip {
+  position: absolute;
+  bottom: 0;
+  padding: 20rpx;
+  width: 100%;
+  border-top: 1rpx solid #ff0000;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 22rpx;
+  color: #ff0000;
+}
+
+.the-camera {
+  display: block;
+  width: 100%;
+  height: 200px;
+}
+
+.btn-group {
+  padding: 20rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+

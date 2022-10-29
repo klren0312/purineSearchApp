@@ -1,5 +1,8 @@
 <!--index.wxml-->
-<view class="container" style="min-height: {{ScreenHeight}}px;">
+<view
+  class="container"
+  style="min-height: {{ScreenHeight}}px;"
+>
   <add-tip></add-tip>
   <view class="main-content">
     <view class="status-bar" style="height:{{StatusBar}}px"></view>
