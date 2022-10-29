@@ -1,22 +1,9 @@
 //app.js
+import { cacheData } from './utils/localData'
 App({
   onLaunch: function () {
-    // 初始化云开发
-    if (!wx.cloud) {
-      console.error('请使用 2.2.3 或以上的基础库以使用云能力')
-    } else {
-      wx.cloud.init({
-        env: 'market-f4hh5',
-        traceUser: true,
-      })
-      // 获取当前Storage中缓存
-      const cacheVersion = wx.getStorageSync('CacheVersion')
-      const cacheData = wx.getStorageSync('CacheData')
-      if (cacheVersion && cacheData) {
-        this.globalData.CacheVersion = cacheVersion
-        this.globalData.CacheData = cacheData
-      }
-    }
+    // 获取当前Storage中缓存
+    this.globalData.CacheData = cacheData
     // 获取系统状态栏信息
     wx.getSystemInfo({
       success: e => {
@@ -39,6 +26,6 @@ App({
     ScreenHeight: '',
     OpenId: '',
     CacheData: [],
-    CacheVersion: ''
+    CacheVersion: true
   }
 })

@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    totalData: [], // 所有数据
+    totalData: app.globalData.CacheData, // 所有数据
     CustomBar: app.globalData.CustomBar,
     ScreenHeight: app.globalData.ScreenHeight,
     searchValue: '',
@@ -71,48 +71,6 @@ Page({
         icon: 'none',
         title: '请联网后使用'
       })
-    } else {
-      const db = wx.cloud.database()
-      db.collection('food_new')
-        .where({
-          name: db.RegExp({
-            regexp: name,
-          })
-        })
-        .field({
-          name: true,
-          value: true,
-          advice: true,
-          level: true,
-          info: true,
-          type: true
-        })
-        .get()
-        .then(res => {
-          const data = res.data.map(v => {
-            return {
-              ...v,
-              show: false
-            }
-          })
-          this.setData({
-            results: data
-          })
-          if (res.data.length !== 0) {
-            this.addHistory(this.data.searchValue)
-            wx.hideLoading()
-          } else {
-            wx.showToast({
-              title: '暂无数据, 可点击反馈中的"其他反馈"向我们反馈',
-              icon: 'none',
-              duration: 3000,
-              mask: false
-            })
-          }
-        })
-        .catch(() => {
-          wx.hideLoading()
-        })
     }
   },
   showDetails: function (e) {
@@ -122,17 +80,6 @@ Page({
     })
   },
   addHistory: async function (name) {
-    const db = wx.cloud.database()
-    db.collection('history').add({
-      data: {
-        name: name,
-        createdAt: db.serverDate() 
-      }
-    })
-    .then(res => {
-      console.log(res)
-    })
-    .catch(console.error)
     wx.reportAnalytics('search_food', {
       food: name,
     })
@@ -221,50 +168,6 @@ Page({
         icon: 'none',
         title: '请联网后使用'
       })
-    } else {
-      const db = wx.cloud.database()
-      db.collection('food_new')
-        .where({
-          level: this.data.searchLevel
-        })
-        .field({
-          name: true,
-          value: true,
-          advice: true,
-          level: true,
-          info: true,
-          type: true
-        })
-        .skip(this.data.page)
-        .limit(30)
-        .get()
-        .then(res => {
-          if (res.data.length > 0) {
-            this.setData({
-              page: this.data.page + 30
-            })
-          } else {
-            this.setData({
-              isBottom: true
-            })
-            wx.hideLoading()
-            return
-          }
-          const data = res.data.map(v => {
-            return {
-              ...v,
-              show: false
-            }
-          })
-          this.setData({
-            results: this.data.results.concat(data)
-          })
-  
-          wx.hideLoading()
-        })
-        .catch(() => {
-          wx.hideLoading()
-        })
     }
   },
 
@@ -286,12 +189,7 @@ Page({
         isOnline: res.isConnected
       })
     })
-    const cacheData = wx.getStorageSync('CacheData')
-    if (cacheData) {
-      this.setData({
-        totalData: cacheData
-      })
-    }
+
     if (options.hasOwnProperty('name')) {
       this.setData({
         searchValue: options.name

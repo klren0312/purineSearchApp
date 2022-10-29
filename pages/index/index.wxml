@@ -27,12 +27,11 @@
         </view>
       </view>
       <view class="outline-block">
-        <view class="switch {{isCache ? 'active' : ''}}">
-          <view class="switch-line {{isCache ? 'switch-on' : ''}}"></view>
-          <view class="switch-text">没网? 也能看!</view>
-          <view class="switch-text">{{isCache ? '已开启😁' : '赶紧开启↘️'}}</view>
-          <view class="switch-tip" wx:if="{{loading}}">下载中...</view>
-          <switch disabled="{{isCache}}" class="switch-instance" checked="{{isCache}}" type="switch" bindchange="cacheChange"></switch>
+        <view class="switch active">
+          <view class="switch-line switch-on"></view>
+          <view class="switch-text">完全离线版!</view>
+          <view class="switch-text">已开启😁</view>
+          <switch disabled class="switch-instance" checked type="switch"></switch>
         </view>
       </view>
     </view>

@@ -10,6 +10,7 @@
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
   },
+  "darkmode": true,
   "style": "v2",
   "usingComponents": {
     "cu-header": "components/cu-header/index"
