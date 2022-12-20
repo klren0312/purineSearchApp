@@ -100,12 +100,6 @@
   font-weight: bold;
 }
 
-.outline-block .switch .switch-tip {
-  margin-top: 20rpx;
-  font-size: 32rpx;
-  color: #323232;
-}
-
 .outline-block .switch-instance {
   position: absolute;
   bottom: 20rpx;
@@ -264,4 +258,9 @@
   display: flex;
   justify-content: space-between;
 }
-
+/* 兼容深色模式 */
+@media (prefers-color-scheme: dark) {
+  .outline-block .switch .switch-text {
+    color: #333;
+  }
+}

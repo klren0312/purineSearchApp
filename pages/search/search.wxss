@@ -104,3 +104,13 @@
 .icon-voice {
   font-size: 64rpx;
 }
+
+/* 兼容深色模式 */
+@media (prefers-color-scheme: dark) {
+  .search-input .input {
+    background: #333;
+  }
+  .no-data-block {
+    color: #333;
+  }
+}
