@@ -119,3 +119,11 @@ view {
   z-index: 1024;
   /* box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1); */
 }
+
+@media (prefers-color-scheme: dark) {
+  .cu-header .cu-bar .border-action {
+    border: #333;
+    color: rgb(209, 209, 209);
+    background: #333;
+  }
+}

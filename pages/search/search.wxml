@@ -1,6 +1,6 @@
 <view class="container" style="min-height: {{ScreenHeight}}px;">
   <cu-header isCustom="{{true}}">
-    <view slot="content">食物嘌呤含量查询</view>
+    <view slot="content" class="cu-header-title">食物嘌呤含量查询</view>
   </cu-header>
   <add-tip></add-tip>
   <view class="search-input">

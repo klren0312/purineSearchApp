@@ -1,0 +1,82 @@
+/* 
+此文件为开发者工具生成，生成时间: 2023/1/9 下午10:47:34
+使用方法：
+在 index.wxss 文件末尾引入样式
+```
+@import "./index-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .container {
+        background-color: rgb(242, 218, 255);
+    }
+
+    .header-text {
+        color: rgb(17, 17, 17);
+    }
+
+    .search-input {
+        background: rgb(17, 17, 17);
+        color: rgb(209, 209, 209);
+    }
+
+    .icon-cat {
+        color: rgba(0, 96, 0, 0.7);
+    }
+
+    .outline-block .switch {
+        background: rgb(0, 0, 0);
+    }
+
+    .outline-block .switch.active {
+        background: rgb(0, 0, 0);
+    }
+
+    .outline-block .switch .switch-line {
+        background: rgba(179, 47, 57, 0.7);
+    }
+
+    .outline-block .switch .switch-line.switch-on {
+        background: rgba(0, 96, 0, 0.7);
+    }
+
+    .type-item {
+        color: rgb(17, 17, 17);
+    }
+
+    .type-item.high {
+        color: rgb(179, 47, 57);
+    }
+
+    .type-item.middle {
+        color: rgb(116, 64, 0);
+    }
+
+    .type-item.low {
+        color: rgb(0, 96, 0);
+    }
+
+    .big-data-block {
+        color: rgb(17, 17, 17);
+        background: rgb(173, 44, 0);
+    }
+
+    .big-data-model {
+        background: rgb(17, 17, 17);
+    }
+
+    .top-block {
+        background: rgb(17, 17, 17);
+    }
+
+    .top-block-footer {
+        color: rgb(179, 47, 57);
+        background: rgb(179, 47, 57);
+    }
+
+    .pull-down-tip {
+        border-top: rgb(0, 0, 0);
+        color: rgb(243, 0, 0);
+    }
+}

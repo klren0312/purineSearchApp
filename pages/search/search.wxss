@@ -107,10 +107,18 @@
 
 /* 兼容深色模式 */
 @media (prefers-color-scheme: dark) {
+  .cu-header-title {
+    color: #333;
+  }
   .search-input .input {
     background: #333;
+    color: #fff;
   }
   .no-data-block {
     color: #333;
+  }
+  .search-btn {
+    color: #fff;
+    background: #333 !important;
   }
 }

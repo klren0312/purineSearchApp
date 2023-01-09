@@ -48,3 +48,5 @@
 .icon-food:before {
   content: "\e631";
 }
+
+@import 'icon-wxa-auto-dark.wxss'
